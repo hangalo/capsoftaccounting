@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package capsoftaccounting.dao;
+package capsoftaccounting.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,14 +19,12 @@ public class BDConnection {
     public static Connection getConnection()  {
         Connection connection;
         
-            String databaseNetworkPath = "jdbc:ucanaccess:////192.168.0.4/etc/Player.accdb";
-       
-            
+        String databaseNetworkPath = "jdbc:ucanaccess:////192.168.0.4/etc/Player.accdb";
+                   
          String msAccDB = "D:/desenvolvimento/msacess/Player.accdb";
          String dbURL = "jdbc:ucanaccess://" + msAccDB; 
    
-       
-        
+              
         
         try {
             //Class.forName(driver);

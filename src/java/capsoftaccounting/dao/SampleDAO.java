@@ -5,6 +5,7 @@
  */
 package capsoftaccounting.dao;
 
+import capsoftaccounting.util.BDConnection;
 import capsoftaccounting.model.Player;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
