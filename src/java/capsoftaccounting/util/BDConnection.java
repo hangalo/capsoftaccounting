@@ -20,8 +20,8 @@ public class BDConnection {
         Connection connection;
         
         String databaseNetworkPath = "jdbc:ucanaccess:////192.168.0.4/etc/Player.accdb";
-                   
-         String msAccDB = "D:/desenvolvimento/msacess/Player.accdb";
+         //C:/Users\viceeconomo/Documents/NetBeansProjects/capsoftaccounting/msacess/          
+         String msAccDB = "C:/Users/viceeconomo/Documents/NetBeansProjects/capsoftaccounting/msacess/Player.accdb";
          String dbURL = "jdbc:ucanaccess://" + msAccDB; 
    
               
