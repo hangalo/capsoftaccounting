@@ -5,51 +5,71 @@
  */
 package capsoftaccounting.dao;
 
+import capsoftaccounting.model.Movcon;
+import capsoftaccounting.model.Player;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 /**
  *
  * @author viceeconomo
  */
 public class MovconDAO {
-    private static final String SELECT_BY_YEAR = "  SELECT giocon.iddoc,   \n" +
-"         giocon.datreg,   \n" +
-"         giocon.desmov,   \n" +
-"         giocon.codcentro,   \n" +
-"         movcon.iddoc,   \n" +
-"         movcon.idrig,   \n" +
-"         movcon.keyconto,   \n" +
-"         sottoc.des,   \n" +
-"         movcon.dare,   \n" +
-"         movcon.avere,   \n" +
-"         movcon.note  \n" +
-"    FROM giocon,   \n" +
-"         movcon,   \n" +
-"         sottoc  \n" +
-"   WHERE ( movcon.keyconto = sottoc.cod ) and  \n" +
-"         ( giocon.iddoc = movcon.iddoc ) and  \n" +
-"         ( ( giocon.anno = ? ) )   \n" +
-"ORDER BY giocon.iddoc ASC,   \n" +
-"         giocon.datreg ASC,   \n" +
-"         movcon.idrig ASC ";
 
-    private static final String SELECT_BY_YEAR_DESC = "  SELECT giocon.iddoc,   \n" +
-"         giocon.datreg,   \n" +
-"         giocon.desmov,   \n" +
-"         giocon.codcentro,   \n" +
-"         movcon.iddoc,   \n" +
-"         movcon.idrig,   \n" +
-"         movcon.keyconto,   \n" +
-"         sottoc.des,   \n" +
-"         movcon.dare,   \n" +
-"         movcon.avere,   \n" +
-"         movcon.note  \n" +
-"    FROM giocon,   \n" +
-"         movcon,   \n" +
-"         sottoc  \n" +
-"   WHERE ( movcon.keyconto = sottoc.cod ) and  \n" +
-"         ( giocon.iddoc = movcon.iddoc ) and  \n" +
-"         ( ( giocon.anno = ? ) )   \n" +
-"ORDER BY giocon.iddoc ASC,   \n" +
-"         giocon.datreg ASC,   \n" +
-"         movcon.idrig ASC ";
-    
+    private static final String SELECT_BY_YEAR = "  SELECT giocon.iddoc,  "
+            + "         giocon.datreg,"
+            + "         giocon.desmov,"
+            + "         giocon.codcentro,"
+            + "         movcon.iddoc,"
+            + "         movcon.idrig,"
+            + "         movcon.keyconto,"
+            + "         sottoc.des,"
+            + "         movcon.dare,"
+            + "         movcon.avere,"
+            + "         movcon.note"
+            + "    FROM giocon,"
+            + "         movcon,"
+            + "         sottoc"
+            + "   WHERE ( movcon.keyconto = sottoc.cod ) and"
+            + "         ( giocon.iddoc = movcon.iddoc ) and"
+            + "         ( ( giocon.anno = ? ) )"
+            + "ORDER BY giocon.iddoc ASC,"
+            + "         giocon.datreg ASC,n"
+            + "         movcon.idrig ASC ";
+
+    private static final String SELECT_BY_YEAR_DESC = "  SELECT giocon.iddoc,"
+            + "         giocon.datreg,"
+            + "         giocon.desmov,"
+            + "         giocon.codcentro,"
+            + "         movcon.iddoc,"
+            + "         movcon.idrig,"
+            + "         movcon.keyconto,"
+            + "         sottoc.des,"
+            + "         movcon.dare,"
+            + "         movcon.avere,"
+            + "         movcon.note"
+            + "    FROM giocon,"
+            + "         movcon,"
+            + "         sottoc"
+            + "   WHERE ( movcon.keyconto = sottoc.cod ) and"
+            + "         ( giocon.iddoc = movcon.iddoc ) and"
+            + "         ( ( giocon.anno = ? ) )"
+            + "ORDER BY giocon.iddoc ASC,"
+            + "         giocon.datreg ASC,"
+            + "         movcon.idrig ASC ";
+
+    private void fillWithData(Movcon movcon, ResultSet rs) {
+        try {
+            movcon.setIddoc(rs.getInt("iddoc"));
+            movcon.setIdrig(rs.getInt("idrig"));
+            movcon.setKeyconto(rs.getString("keyconto"));
+            movcon.setDare(rs.getDouble("dare"));
+            movcon.setAvere(rs.getDouble("avere"));
+            movcon.setNote(rs.getString("note"));
+
+        } catch (SQLException ex) {
+            System.err.println("Error ond data load: " + ex.getLocalizedMessage());
+        }
+    }
+
 }
