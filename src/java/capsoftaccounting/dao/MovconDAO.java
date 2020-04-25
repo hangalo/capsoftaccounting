@@ -7,7 +7,6 @@ package capsoftaccounting.dao;
 
 import capsoftaccounting.model.Giocon;
 import capsoftaccounting.model.Movcon;
-import capsoftaccounting.model.Player;
 import capsoftaccounting.model.Sottoc;
 import capsoftaccounting.util.BDConnection;
 import java.sql.Connection;
