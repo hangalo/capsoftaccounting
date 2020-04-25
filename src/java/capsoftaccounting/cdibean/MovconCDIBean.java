@@ -12,6 +12,9 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import org.primefaces.event.SelectEvent;
 
 /**
  *
@@ -21,11 +24,11 @@ import javax.enterprise.context.RequestScoped;
 @RequestScoped
 public class MovconCDIBean {
 
-     MovconDAO movconDAO = new MovconDAO();
-
+    MovconDAO movconDAO = new MovconDAO();
+    Movcon movcon = new Movcon();
     List<Movcon> movcons = new ArrayList<>();
-    
-    
+    List<Movcon> searchedMovcons = new ArrayList<>();
+
     @PostConstruct
     public void init() {
         movcons = movconDAO.findAll();
@@ -46,6 +49,48 @@ public class MovconCDIBean {
     public void setMovcons(List<Movcon> movcons) {
         this.movcons = movcons;
     }
+
+    public List<Movcon> queryByDescrizoneAutoComplete(String descrizione) {
+        List<Movcon> lista = new ArrayList<>();
+        for (Movcon mv : movconDAO.findMovconByDescrizoine(descrizione)) {
+            if (mv.getSottoc().getDescrizione().toLowerCase().startsWith(descrizione.toLowerCase())) {
+                lista.add(mv);
+            }
+        }
+
+        return lista;
+    }
+
+    public List<Movcon> getContoByDescrizone(String descrizione) {
+        searchedMovcons = movconDAO.findMovconByDescrizoine(descrizione);
+        return searchedMovcons;
+
+    }
+
+    
+    public void selectListenerDescrizione(SelectEvent event) {
+        Movcon mv = (Movcon) event.getObject();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Conto:\t" + mv.getIddoc() + "\t" + mv.getSottoc().getDescrizione()));
+        getContoByDescrizone(mv.getSottoc().getDescrizione());
+
+    }
+    
+    public List<Movcon> getSearchedMovcons() {
+        return searchedMovcons;
+    }
+
+    public void setSearchedMovcons(List<Movcon> searchedMovcons) {
+        this.searchedMovcons = searchedMovcons;
+    }
+
+    public Movcon getMovcon() {
+        return movcon;
+    }
+
+    public void setMovcon(Movcon movcon) {
+        this.movcon = movcon;
+    }
+
     
     
     

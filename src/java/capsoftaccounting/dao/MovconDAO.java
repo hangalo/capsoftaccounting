@@ -64,28 +64,7 @@ public class MovconDAO {
     
     
     
-     public List<Movcon> findAllTest() {
-        PreparedStatement ps = null;
-        Connection conn = null;
-        ResultSet rs = null;
-         List<Movcon> movcons = new ArrayList<>();
-        try {
-            conn = BDConnection.getConnection();
-            ps = conn.prepareStatement(SELECT_TEST);                              
-            rs = ps.executeQuery();
-            while (rs.next()) {
-                Movcon movcon = new Movcon();
-                fillWithDataTest(movcon, rs);
-                movcons.add(movcon);
-            }
-
-        } catch (SQLException ex) {
-            System.err.println("Erro ao ler dados: " + ex.getLocalizedMessage());
-        } finally {
-            BDConnection.closeConnection(conn);
-        }
-        return movcons;
-    }
+     
     
     public List<Movcon> findAll() {
         PreparedStatement ps = null;
@@ -110,7 +89,7 @@ public class MovconDAO {
         return movcons;
     }
     
-    public List<Movcon> findMovconByDate(Date data) {
+    public List<Movcon> findMovconByDate(Integer date) {
         PreparedStatement ps = null;
         Connection conn = null;
         ResultSet rs = null;
@@ -118,7 +97,7 @@ public class MovconDAO {
         try {
             conn = BDConnection.getConnection();
             ps = conn.prepareStatement(SELECT_BY_YEAR);
-            ps.setDate(1,  new java.sql.Date(data.getTime()));
+            ps.setInt(1,  date);
             
            
             rs = ps.executeQuery();
@@ -137,6 +116,31 @@ public class MovconDAO {
     }
     
     
+     public List<Movcon> findMovconByDescrizoine(String descrizione) {
+        PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+         List<Movcon> movcons = new ArrayList<>();
+        try {
+            conn = BDConnection.getConnection();
+            ps = conn.prepareStatement(SELECT_BY_DESC);
+            ps.setString(1,  descrizione);
+            
+           
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                Movcon movcon = new Movcon();
+                fillWithData(movcon, rs);
+                movcons.add(movcon);
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Erro ao ler dados: " + ex.getLocalizedMessage());
+        } finally {
+            BDConnection.closeConnection(conn);
+        }
+        return movcons;
+    }
     
     
     
@@ -166,22 +170,6 @@ public class MovconDAO {
         }
     }
     
-    private void fillWithDataTest(Movcon movcon, ResultSet rs) {
-        try {
-                                  
-            movcon.setIddoc(rs.getInt("iddoc"));
-            movcon.setIdrig(rs.getInt("idrig"));
-            movcon.setKeyconto(rs.getString("keyconto"));
-                     
-            movcon.setDare(rs.getDouble("dare"));
-            movcon.setAvere(rs.getDouble("avere"));
-            movcon.setNote(rs.getString("note"));
-            
-           
-            
-        } catch (SQLException ex) {
-            System.err.println("Error ond data load: " + ex.getLocalizedMessage());
-        }
-    }
+  
     
 }

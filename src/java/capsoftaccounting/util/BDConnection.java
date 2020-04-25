@@ -20,17 +20,23 @@ public class BDConnection {
         Connection connection;
         
         String databaseNetworkPath = "jdbc:ucanaccess:////192.168.0.4/etc/Player.accdb";
-         //C:/Users\viceeconomo/Documents/NetBeansProjects/capsoftaccounting/msacess/          
-         ///String msAccDB = "C:/Users/viceeconomo/Documents/NetBeansProjects/capsoftaccounting/msacess/Player.accdb";
+        
+        //*jdbc:ucanaccess:////servername/sharename/foldername/Database1.accdb;showSchema=true*/
+        
          
       //String msAccDB = "C:/Users/viceeconomo/Documents/NetBeansProjects/capsoftaccounting/msacess/MX-M900.MDB";
       //String msAccDB = "C:\\Pacioli Project\\test\\Accounts\\MX-M900.MDB";
-      String msAccDB = "\\\\192.168.0.68\\economo generale\\Italsoft00\\XP-MACRO\\XP-DATI\\XP-M900\\MX-M900.MDB";
+    String msAccDB = "\\\\192.168.0.68\\economo generale\\Italsoft00\\XP-MACRO\\XP-DATI\\XP-M900\\MX-M900.MDB";
          
-        
-         String dbURL = "jdbc:ucanaccess://" + msAccDB; 
+   //  String serverPath ="192.168.0.164";
+   //   String msAccDB = "/Public/db_capitolari/Capitolari2018.accdb";
+   ///String dbURL = "jdbc:ucanaccess:////"+serverPath + msAccDB; 
+       
+               
+         String dbURL = "jdbc:ucanaccess:////"+msAccDB; 
+         System.out.println("DbURL "+dbURL);
    
-              
+             
         
         try {
             //Class.forName(driver);
