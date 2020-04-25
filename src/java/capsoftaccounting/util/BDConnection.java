@@ -24,7 +24,8 @@ public class BDConnection {
          ///String msAccDB = "C:/Users/viceeconomo/Documents/NetBeansProjects/capsoftaccounting/msacess/Player.accdb";
          
       //String msAccDB = "C:/Users/viceeconomo/Documents/NetBeansProjects/capsoftaccounting/msacess/MX-M900.MDB";
-      String msAccDB = "C:\\Pacioli Project\\test\\Accounts\\MX-M900.MDB";
+      //String msAccDB = "C:\\Pacioli Project\\test\\Accounts\\MX-M900.MDB";
+      String msAccDB = "\\\\192.168.0.68\\economo generale\\Italsoft00\\XP-MACRO\\XP-DATI\\XP-M900\\MX-M900.MDB";
          
         
          String dbURL = "jdbc:ucanaccess://" + msAccDB; 
