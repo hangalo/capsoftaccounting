@@ -124,7 +124,7 @@ public class MovconDAO {
         try {
             conn = BDConnection.getConnection();
             ps = conn.prepareStatement(SELECT_BY_DESC);
-            ps.setString(1,  descrizione);
+            ps.setString(1,  "%"+descrizione+"%");
             
            
             rs = ps.executeQuery();

@@ -9,6 +9,7 @@ import capsoftaccounting.dao.MovconDAO;
 import capsoftaccounting.model.Movcon;
 import java.util.ArrayList;
 import java.util.List;
+import javafx.event.ActionEvent;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -28,10 +29,12 @@ public class MovconCDIBean {
     Movcon movcon = new Movcon();
     List<Movcon> movcons = new ArrayList<>();
     List<Movcon> searchedMovcons = new ArrayList<>();
+    
+    private String descrizione;
 
     @PostConstruct
     public void init() {
-        movcons = movconDAO.findAll();
+    //    movcons = movconDAO.findAll();
     }
 
     public MovconDAO getMovconDAO() {
@@ -68,6 +71,13 @@ public class MovconCDIBean {
     }
 
     
+     public List<Movcon> listContoByDescrizone(ActionEvent event) {
+         System.err.println("Passs Sucess");
+        searchedMovcons = movconDAO.findMovconByDescrizoine(descrizione);
+        return searchedMovcons;
+
+    }
+    
     public void selectListenerDescrizione(SelectEvent event) {
         Movcon mv = (Movcon) event.getObject();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Conto:\t" + mv.getIddoc() + "\t" + mv.getSottoc().getDescrizione()));
@@ -89,6 +99,14 @@ public class MovconCDIBean {
 
     public void setMovcon(Movcon movcon) {
         this.movcon = movcon;
+    }
+
+    public String getDescrizione() {
+        return descrizione;
+    }
+
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
     }
 
     

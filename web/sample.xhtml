@@ -2,14 +2,60 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
     </h:head>
     <h:body>
      <f:view>
-            <h:form>
-                <h:dataTable value="#{playerMbean.players}" var="o">
+         <!--
+             <h:form id="formCercaContoPerData"  >
+                    <p:messages id="messages"/>
+
+                    <p:panel header="Cerca Conto per descrizione">
+
+                        <h:panelGrid columns="7" cellspacing="5%">
+                            <h:outputLabel value="Descrizione conto"/>
+                            <p:autoComplete value="#{playerMbean.player}"
+                                            completeMethod="#{playerMbean.queryByDescrizoneAutoComplete}"
+                                            var="p"
+                                            itemValue="#{p}"
+                                            itemLabel="#{p.name}" minQueryLength="3"  maxResults="40" dropdown="true" forceSelection="true" requiredMessage="Cliccare sul il dato" converter="playerConConverter" size="40">
+
+                                <p:column>
+                                    <h:outputText value="#{p.name} (#{p.age})"/>
+                                </p:column>
+
+                                <p:ajax event="itemSelect" listener="#{playerMbean.selectListenerDescrizione}" update="messages :ellencaDati:datiConto" />
+
+                            </p:autoComplete>
+
+
+                        </h:panelGrid>
+
+                    </p:panel>
+                </h:form>
+         
+         -->
+         
+           <h:form id="formCercaContoPerData"  >
+                                   <p:messages id="messages"/>
+               
+                                   <p:panel header="Cerca Conto per descrizione">
+               
+                                       <h:panelGrid columns="7" cellspacing="5%">
+                                           <h:outputLabel value="Descrizione conto"/>
+                                           <p:inputText value="#{playerMbean.descrizione}"/>
+                                       </h:panelGrid>
+               
+                                   </p:panel>
+                                   <h:commandButton value="Cerca" actionListener="#{playerMbean.listContoByDescrizone}"/>
+                               </h:form>
+         
+         
+            <h:form id="ellencaDati">
+                <h:dataTable id="datiConto" value="#{playerMbean.players}" var="o">
                     
                     <h:column>
     				<!-- column header -->

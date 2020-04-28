@@ -17,7 +17,7 @@
             </ui:define>
 
             <ui:define name="content">
-               
+                <!--
                        
                     
                                <h:form id="formCercaContoPerData"  >
@@ -27,13 +27,26 @@
                
                                        <h:panelGrid columns="7" cellspacing="5%">
                                            <h:outputLabel value="Descrizione conto"/>
-                                           <p:inputText value="#{movconCDIBean.descrizione}"/>
+                                           <p:autoComplete value="#{movconCDIBean.movcon}"
+                                                           completeMethod="#{movconCDIBean.queryByDescrizoneAutoComplete}"
+                                                           var="mv"
+                                                           itemValue="#{mv}"
+                                                           itemLabel="#{mv.sottoc.descrizione}" minQueryLength="3"  maxResults="40" dropdown="true" forceSelection="true" requiredMessage="Cliccare sul il dato" converter="movConConverter" size="40">
+               
+                                               <p:column>
+                                                   <h:outputText value="#{mv.iddoc} (#{mv.sottoc.descrizione})"/>
+                                               </p:column>
+               
+                                               <p:ajax event="itemSelect" listener="#{movconCDIBean.selectListenerDescrizione}" update="messages :ellencaDati:datiConto" />
+               
+                                           </p:autoComplete>
+               
+               
                                        </h:panelGrid>
                
                                    </p:panel>
-                                   <h:commandButton value="Cerca" actionListener="#{movconCDIBean.listContoByDescrizone}"/>
                                </h:form>
-                
+                -->
 
                 <h:form id="ellencaDati">
 
@@ -55,7 +68,7 @@
                     </p:dataTable>
                 </h:form>
 
-              
+                </h:form>
 
 
 
