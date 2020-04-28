@@ -9,12 +9,13 @@ import capsoftaccounting.dao.MovconDAO;
 import capsoftaccounting.model.Movcon;
 import java.util.ArrayList;
 import java.util.List;
-import javafx.event.ActionEvent;
+
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import org.primefaces.event.SelectEvent;
 
 /**
@@ -34,7 +35,7 @@ public class MovconCDIBean {
 
     @PostConstruct
     public void init() {
-        //    movcons = movconDAO.findAll();
+     ///  movcons = movconDAO.findAll();
     }
 
     public MovconDAO getMovconDAO() {

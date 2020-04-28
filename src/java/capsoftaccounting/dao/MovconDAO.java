@@ -59,7 +59,7 @@ public class MovconDAO {
             + "FROM giocon, movcon,  sottoc  "
             + " WHERE ( movcon.keyconto = sottoc.cod )"
             + " and   ( giocon.iddoc = movcon.iddoc )"
-            + " and( ( giocon.desmov = ? ) )"
+            + " and( ( giocon.desmov LIKE ? ) )"
             + "ORDER BY giocon.iddoc ASC, giocon.datreg ASC";  
     
     
@@ -125,7 +125,7 @@ public class MovconDAO {
             conn = BDConnection.getConnection();
             ps = conn.prepareStatement(SELECT_BY_DESC);
             ps.setString(1,  "%"+descrizione+"%");
-            
+            System.out.println("DAO  ===> Passed ===> Value" + descrizione);
            
             rs = ps.executeQuery();
             while (rs.next()) {
