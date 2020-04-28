@@ -29,12 +29,12 @@ public class MovconCDIBean {
     Movcon movcon = new Movcon();
     List<Movcon> movcons = new ArrayList<>();
     List<Movcon> searchedMovcons = new ArrayList<>();
-    
+
     private String descrizione;
 
     @PostConstruct
     public void init() {
-    //    movcons = movconDAO.findAll();
+        //    movcons = movconDAO.findAll();
     }
 
     public MovconDAO getMovconDAO() {
@@ -70,21 +70,20 @@ public class MovconCDIBean {
 
     }
 
-    
-     public List<Movcon> listContoByDescrizone(ActionEvent event) {
-         System.err.println("Passs Sucess");
+    public List<Movcon> listContoByDescrizone(ActionEvent event) {
+        System.err.println("Passs Sucess");
         searchedMovcons = movconDAO.findMovconByDescrizoine(descrizione);
         return searchedMovcons;
 
     }
-    
+
     public void selectListenerDescrizione(SelectEvent event) {
         Movcon mv = (Movcon) event.getObject();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Conto:\t" + mv.getIddoc() + "\t" + mv.getSottoc().getDescrizione()));
         getContoByDescrizone(mv.getSottoc().getDescrizione());
 
     }
-    
+
     public List<Movcon> getSearchedMovcons() {
         return searchedMovcons;
     }
@@ -109,7 +108,4 @@ public class MovconCDIBean {
         this.descrizione = descrizione;
     }
 
-    
-    
-    
 }
