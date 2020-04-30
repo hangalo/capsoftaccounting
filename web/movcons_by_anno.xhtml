@@ -37,7 +37,7 @@
 
                 <h:form id="ellencaDati">
 
-                    <p:dataTable id="datiConto" value="#{movconCDIBean.searchedMovcons}"  var="item" sortBy="#{item.iddoc}" scrollable="true" scrollHeight="300" rows="10"
+                    <p:dataTable id="datiConto" value="#{movconCDIBean.searchedMovcons}"  var="item" sortBy="#{item.iddoc}" expandableRowGroups="true" scrollable="true" scrollHeight="300" rows="10"
                                  paginator="true"
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
@@ -86,11 +86,11 @@
                      <p:summaryRow>
                             <p:column colspan="3" style="text-align:right">
                                 <h:outputText value="Totale Dare:" />
-                                <h:inputText id="totaleAvere" value="#{movconCDIBean.sumaDare}"/>
+                                <h:inputText id="totaleDare" value="#{movconCDIBean.movcon.totaleDare}"/>
                             </p:column>
                             <p:column>
                                 <h:outputLabel value="Totale avere:"/>
-                                 <h:inputText id="totaleAvere" value="#{movconCDIBean.sumaAvere}"/>
+                                <h:inputText id="totaleAvere" value="#{movconCDIBean.movcon.totaleAvere}"/>
                             </p:column>
                         </p:summaryRow>
 

@@ -20,6 +20,9 @@ public class Movcon {
         private String note; 
         private Sottoc sottoc;
         private Giocon giocon;
+        
+        public Double totaleAvere;
+        public Double totaleDare;
 
     public Movcon() {
     }
@@ -100,6 +103,25 @@ public class Movcon {
         this.giocon = giocon;
     }
 
+    public Double getTotaleAvere() {
+        return totaleAvere;
+    }
+
+    public void setTotaleAvere(Double totaleAvere) {
+        this.totaleAvere = totaleAvere;
+    }
+
+    public Double getTotaleDare() {
+        return totaleDare;
+    }
+
+    public void setTotaleDare(Double totaleDare) {
+        this.totaleDare = totaleDare;
+    }
+
+    
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;

@@ -71,19 +71,23 @@ public class MovconCDIBean implements Serializable{
     }
 
      public Double getSumaAvere() {
-        Double s = 0.0;
+        Double valore = 0.0;
+         Movcon mv= new Movcon();
         for (Movcon it : searchedMovcons) {
-            s += it.getAvere();
+            valore += it.getAvere();
+             mv.setTotaleAvere(valore);
         }
-        return s;
+        return valore;
     }
      
       public Double getSumaDare() {
-        Double s = 0.0;
+        Double valore = 0.0;
+        Movcon mv= new Movcon();
         for (Movcon it : searchedMovcons) {
-            s += it.getDare();
+            valore += it.getDare();
+            mv.setTotaleDare(valore);
         }
-        return s;
+        return valore;
     }
     
     
