@@ -7,12 +7,13 @@ package capsoftaccounting.cdibean;
 
 import capsoftaccounting.dao.MovconDAO;
 import capsoftaccounting.model.Movcon;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -23,8 +24,8 @@ import org.primefaces.event.SelectEvent;
  * @author informatica
  */
 @Named(value = "movconCDIBean")
-@RequestScoped
-public class MovconCDIBean {
+@SessionScoped
+public class MovconCDIBean implements Serializable{
 
     MovconDAO movconDAO = new MovconDAO();
     Movcon movcon = new Movcon();
