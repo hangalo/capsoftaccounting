@@ -17,50 +17,61 @@
             </ui:define>
 
             <ui:define name="content">
-               
-                       
-                    
-                               <h:form id="formCercaContoPerData"  >
-                                   <p:messages id="messages"/>
-               
-                                   <p:panel header="Cerca Conto per descrizione">
-               
-                                       <h:panelGrid columns="7" cellspacing="5%">
-                                           <h:outputLabel value="Descrizione conto"/>
-                                           <p:inputText value="#{movconCDIBean.descrizione}"/>
-                                       </h:panelGrid>
-               
-                                   </p:panel>
-                                   <p:commandButton value="Cerca" actionListener="#{movconCDIBean.listContoByDescrizone}" ajax="false"/>
-                               </h:form>
-                
+
+
+
+                <h:form id="formCercaContoPerData"  >
+                    <p:messages id="messages"/>
+
+                    <p:panel header="Cerca Conto per descrizione">
+
+                        <h:panelGrid columns="7" cellspacing="5%">
+                            <h:outputLabel value="Descrizione conto"/>
+                            <p:inputText value="#{movconCDIBean.descrizione}"/>
+                        </h:panelGrid>
+
+                    </p:panel>
+                    <p:commandButton value="Cerca" actionListener="#{movconCDIBean.listContoByDescrizone}" ajax="false"/>
+                </h:form>
+
 
                 <h:form id="ellencaDati">
 
-                    <p:dataTable id="datiConto" value="#{movconCDIBean.searchedMovcons}"  var="item" scrollable="true" scrollHeight="300" rows="10"
-                 paginator="true"
-                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                 rowsPerPageTemplate="15, 20, 25" paginatorPosition="bottom">
+                    <p:dataTable id="datiConto" value="#{movconCDIBean.searchedMovcons}"  var="item" sortBy="#{item.idrig}" scrollable="true" scrollHeight="300" rows="10"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                                 rowsPerPageTemplate="15, 20, 25" paginatorPosition="bottom">
 
                         <p:column headerText="Id">
-                             <h:outputText value="#{item.iddoc}"/>
+                            <h:outputText value="#{item.iddoc}"/>
                         </p:column>
-                        
+
                         <p:column headerText="Id Rig">
-                           
+
                             <h:outputText value="#{item.idrig}"/>
                         </p:column>
-                        
-                          <p:column headerText="Id Rig">
-                           
+
+                        <p:column headerText="Id Rig">
+
                             <h:outputText value="#{item.idrig}"/>
                         </p:column>
+
+
+                        <p:summaryRow>
+                            <p:column colspan="3" style="text-align:right">
+                                <h:outputText value="Total:" />
+                            </p:column>
+                            <p:column>
+                                <h:outputLabel value="Test"/>
+
+                            </p:column>
+                        </p:summaryRow>
 
                     </p:dataTable>
                 </h:form>
 
-              
+
 
 
 
