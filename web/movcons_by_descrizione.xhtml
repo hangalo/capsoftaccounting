@@ -83,13 +83,14 @@
                         </p:column>
 
 
-                        <p:summaryRow>
+                       <p:summaryRow>
                             <p:column colspan="3" style="text-align:right">
-                                <h:outputText value="Total:" />
+                                <h:outputText value="Totale Dare:" />
+                                <h:inputText id="totaleAvere" value="#{movconCDIBean.sumaDare}"/>
                             </p:column>
                             <p:column>
-                                <h:outputLabel value="Test"/>
-
+                                <h:outputLabel value="Totale avere:"/>
+                                 <h:inputText id="totaleAvere" value="#{movconCDIBean.sumaAvere}"/>
                             </p:column>
                         </p:summaryRow>
 

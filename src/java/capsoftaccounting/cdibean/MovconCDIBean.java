@@ -69,6 +69,23 @@ public class MovconCDIBean {
 
     }
 
+     public Double getSumaAvere() {
+        Double s = 0.0;
+        for (Movcon it : searchedMovcons) {
+            s += it.getAvere();
+        }
+        return s;
+    }
+     
+      public Double getSumaDare() {
+        Double s = 0.0;
+        for (Movcon it : searchedMovcons) {
+            s += it.getDare();
+        }
+        return s;
+    }
+    
+    
     public List<Movcon> queryByDescrizoneAutoComplete(String descrizione) {
         List<Movcon> lista = new ArrayList<>();
         for (Movcon mv : movconDAO.findMovconByDescrizoine(descrizione)) {
