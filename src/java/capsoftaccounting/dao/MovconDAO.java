@@ -99,6 +99,8 @@ public class MovconDAO {
             ps = conn.prepareStatement(SELECT_BY_YEAR);
             ps.setInt(1,  date);
             
+          
+            
            
             rs = ps.executeQuery();
             while (rs.next()) {
@@ -125,7 +127,7 @@ public class MovconDAO {
             conn = BDConnection.getConnection();
             ps = conn.prepareStatement(SELECT_BY_DESC);
             ps.setString(1,  "%"+descrizione+"%");
-            System.out.println("DAO  ===> Passed ===> Value" + descrizione);
+           
            
             rs = ps.executeQuery();
             while (rs.next()) {

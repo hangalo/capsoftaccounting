@@ -32,7 +32,7 @@ public class MovconCDIBean {
     List<Movcon> searchedMovcons = new ArrayList<>();
 
     private String descrizione;
-
+    private Integer anno;
     @PostConstruct
     public void init() {
      ///  movcons = movconDAO.findAll();
@@ -70,9 +70,16 @@ public class MovconCDIBean {
         return searchedMovcons;
 
     }
+    
+    
+      public List<Movcon> listMovimentiByAnno(ActionEvent event) {
+        searchedMovcons = movconDAO.findMovconByDate(anno);
+        return searchedMovcons;
 
-    public List<Movcon> listContoByDescrizone(ActionEvent event) {
-        System.err.println("Passs Sucess");
+    }
+    
+
+    public List<Movcon> listMovimentiByDescrizone(ActionEvent event) {
         searchedMovcons = movconDAO.findMovconByDescrizoine(descrizione);
         return searchedMovcons;
 

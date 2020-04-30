@@ -1,0 +1,87 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./WEB-INF/template.xhtml">
+
+
+
+            <ui:define name="left">
+                left
+            </ui:define>
+
+            <ui:define name="content">
+
+
+
+                <h:form id="formCercaContoPerData"  >
+                    <p:messages id="messages"/>
+
+                    <p:panel header="Cerca Conto per descrizione">
+
+                        <h:panelGrid columns="7" cellspacing="5%">
+                            <h:outputLabel value="Descrizione conto"/>
+                            <p:inputText value="#{movconCDIBean.descrizione}"/>
+                        </h:panelGrid>
+
+                    </p:panel>
+                    <p:commandButton value="Cerca" actionListener="#{movconCDIBean.listMovimentiByAnno}" ajax="false"/>
+                </h:form>
+
+
+                <h:form id="ellencaDati">
+
+                    <p:dataTable id="datiConto" value="#{movconCDIBean.searchedMovcons}"  var="item" sortBy="#{item.idrig}" scrollable="true" scrollHeight="300" rows="10"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                                 rowsPerPageTemplate="15, 20, 25" paginatorPosition="bottom">
+
+                        <p:column headerText="Id">
+                            <h:outputText value="#{item.iddoc}"/>
+                        </p:column>
+
+                        <p:column headerText="Id Rig">
+
+                            <h:outputText value="#{item.idrig}"/>
+                        </p:column>
+
+                        <p:column headerText="Id Rig">
+
+                            <h:outputText value="#{item.idrig}"/>
+                        </p:column>
+
+
+                        <p:summaryRow>
+                            <p:column colspan="3" style="text-align:right">
+                                <h:outputText value="Total:" />
+                            </p:column>
+                            <p:column>
+                                <h:outputLabel value="Test"/>
+
+                            </p:column>
+                        </p:summaryRow>
+
+                    </p:dataTable>
+                </h:form>
+
+
+
+
+
+            </ui:define>
+
+            <ui:define name="bottom">
+                bottom
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
