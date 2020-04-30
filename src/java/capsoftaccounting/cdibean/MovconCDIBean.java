@@ -33,9 +33,10 @@ public class MovconCDIBean {
 
     private String descrizione;
     private Integer anno;
+
     @PostConstruct
     public void init() {
-     ///  movcons = movconDAO.findAll();
+        //movcons = movconDAO.findAll();
     }
 
     public MovconDAO getMovconDAO() {
@@ -54,6 +55,20 @@ public class MovconCDIBean {
         this.movcons = movcons;
     }
 
+    //used
+    public List<Movcon> listMovimentiByAnno(ActionEvent event) {
+        searchedMovcons = movconDAO.findMovconByDate(anno);
+        return searchedMovcons;
+
+    }
+//used
+
+    public List<Movcon> listMovimentiByDescrizone(ActionEvent event) {
+        searchedMovcons = movconDAO.findMovconByDescrizoine(descrizione);
+        return searchedMovcons;
+
+    }
+
     public List<Movcon> queryByDescrizoneAutoComplete(String descrizione) {
         List<Movcon> lista = new ArrayList<>();
         for (Movcon mv : movconDAO.findMovconByDescrizoine(descrizione)) {
@@ -66,20 +81,6 @@ public class MovconCDIBean {
     }
 
     public List<Movcon> getContoByDescrizone(String descrizione) {
-        searchedMovcons = movconDAO.findMovconByDescrizoine(descrizione);
-        return searchedMovcons;
-
-    }
-    
-    
-      public List<Movcon> listMovimentiByAnno(ActionEvent event) {
-        searchedMovcons = movconDAO.findMovconByDate(anno);
-        return searchedMovcons;
-
-    }
-    
-
-    public List<Movcon> listMovimentiByDescrizone(ActionEvent event) {
         searchedMovcons = movconDAO.findMovconByDescrizoine(descrizione);
         return searchedMovcons;
 
@@ -114,6 +115,14 @@ public class MovconCDIBean {
 
     public void setDescrizione(String descrizione) {
         this.descrizione = descrizione;
+    }
+
+    public Integer getAnno() {
+        return anno;
+    }
+
+    public void setAnno(Integer anno) {
+        this.anno = anno;
     }
 
 }

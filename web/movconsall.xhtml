@@ -17,37 +17,65 @@
             </ui:define>
 
             <ui:define name="content">
-               
+
 
                 <h:form id="ellencaDati">
 
-                    <p:dataTable id="datiConto" value="#{movconCDIBean.movcons}"  var="item" scrollable="true" scrollHeight="300">
+                    <p:dataTable id="datiConto" value="#{movconCDIBean.movcons}"  var="item" sortBy="#{item.iddoc}" scrollable="true" scrollHeight="900">
+
+                        <p:headerRow>
+                            <p:column colspan="2">
+                                <h:outputText value="#{item.giocon.desmov}" />
+                            </p:column>
+                            <p:column colspan="1">
+                                <h:outputText value="#{item.giocon.codcentro}" />
+                            </p:column>
+                            <p:column colspan="1">
+                                <h:outputText value="#{item.giocon.datreg}" />
+                            </p:column>
+                        </p:headerRow>
 
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Id Doc"/>
+                                <h:outputText value="Conto"/>
                             </f:facet>
-                            <h:outputText value="#{item.iddoc}"/>
+                            <h:outputText value="#{item.keyconto}"/>
                         </p:column>
                         <p:column>
                             <f:facet name="header">
-                                <h:outputText value="Id Reg"/>
-                            </f:facet>
-                            <h:outputText value="#{item.idrig}"/>
-                        </p:column>
-                          <p:column>
-                            <f:facet name="header">
                                 <h:outputText value="Descrizione"/>
                             </f:facet>
-                              <h:outputText value="#{item.giocon.desmov}"/>
+                            <h:outputText value="#{item.sottoc.descrizione}"/>
                         </p:column>
-                        
-                        
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Dare"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dare}"/>
+                        </p:column>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Avere"/>
+                            </f:facet>
+                            <h:outputText value="#{item.avere}"/>
+                        </p:column>
+
+
+                        <p:summaryRow>
+                            <p:column colspan="3" style="text-align:right">
+                                <h:outputText value="Total:" />
+                            </p:column>
+                            <p:column>
+                                <h:outputLabel value="Test"/>
+
+                            </p:column>
+                        </p:summaryRow>
 
                     </p:dataTable>
                 </h:form>
 
-               
+
 
 
 

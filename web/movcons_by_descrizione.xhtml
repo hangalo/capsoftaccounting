@@ -37,24 +37,49 @@
 
                 <h:form id="ellencaDati">
 
-                    <p:dataTable id="datiConto" value="#{movconCDIBean.searchedMovcons}"  var="item" sortBy="#{item.idrig}" scrollable="true" scrollHeight="300" rows="10"
+                    <p:dataTable id="datiConto" value="#{movconCDIBean.searchedMovcons}"  var="item" sortBy="#{item.iddoc}" scrollable="true" scrollHeight="1300" rows="25"
                                  paginator="true"
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
-                                 rowsPerPageTemplate="15, 20, 25" paginatorPosition="bottom">
+                                 rowsPerPageTemplate="25, 30, 35" paginatorPosition="bottom">
 
-                        <p:column headerText="Id">
-                            <h:outputText value="#{item.iddoc}"/>
+                        
+                        <p:headerRow>
+                            <p:column colspan="2">
+                                <h:outputText value="#{item.giocon.desmov}" />
+                            </p:column>
+                            <p:column colspan="1">
+                                <h:outputText value="#{item.giocon.codcentro}" />
+                            </p:column>
+                            <p:column colspan="1">
+                                <h:outputText value="#{item.giocon.datreg}" />
+                            </p:column>
+                        </p:headerRow>
+
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Conto"/>
+                            </f:facet>
+                            <h:outputText value="#{item.keyconto}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Descrizione"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sottoc.descrizione}"/>
+                        </p:column>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Dare"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dare}"/>
                         </p:column>
 
-                        <p:column headerText="Id Rig">
-
-                            <h:outputText value="#{item.idrig}"/>
-                        </p:column>
-
-                        <p:column headerText="Id Rig">
-
-                            <h:outputText value="#{item.idrig}"/>
+                        <p:column>
+                            <f:facet name="header">
+                                <h:outputText value="Avere"/>
+                            </f:facet>
+                            <h:outputText value="#{item.avere}"/>
                         </p:column>
 
 
