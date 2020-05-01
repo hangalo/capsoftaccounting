@@ -12,26 +12,20 @@
 
 
 
-            <ui:define name="left">
-                left
-            </ui:define>
-
             <ui:define name="content">
-
 
 
                 <h:form id="formCercaContoPerData"  >
                     <p:messages id="messages"/>
 
-                    <p:panel header="Cerca Conto per descrizione">
 
-                        <h:panelGrid columns="7" cellspacing="5%">
-                            <h:outputLabel value="Descrizione conto"/>
+                    <h:panelGrid columns="3" cellspacing="5%" style="margin-bottom: 12px">
+                            <p:outputLabel value="Descrizione conto"/>
                             <p:inputText value="#{movconCDIBean.descrizione}"/>
+                            <p:commandButton value="Cerca" actionListener="#{movconCDIBean.listMovimentiByDescrizone}" ajax="false"/>
                         </h:panelGrid>
 
-                    </p:panel>
-                    <p:commandButton value="Cerca" actionListener="#{movconCDIBean.listMovimentiByDescrizone}" ajax="false"/>
+                    
                 </h:form>
 
 
@@ -86,11 +80,11 @@
                        <p:summaryRow>
                             <p:column colspan="3" style="text-align:right">
                                 <h:outputText value="Totale Dare:" />
-                                <h:inputText id="totaleDare" value="#{movconCDIBean.sommaDare(item.iddoc)}"/>
+                                <h:outputText id="totaleDare" value="#{movconCDIBean.sommaDare(item.iddoc)}"/>
                             </p:column>
                             <p:column>
                                 <h:outputLabel value="Totale avere:"/>
-                                 <h:inputText id="totaleDare" value="#{movconCDIBean.sommaAvere(item.iddoc)}"/>
+                                 <h:outputText id="totaleAvere" value="#{movconCDIBean.sommaAvere(item.iddoc)}"/>
                             </p:column>
                         </p:summaryRow>
 

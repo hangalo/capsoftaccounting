@@ -8,21 +8,34 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <h:outputStylesheet library="css" name="default.css"/>
         <h:outputStylesheet library="css" name="cssLayout.css"/>
-        <title>Facelets Template</title>
+        <title>Macro XP</title>
     </h:head>
 
     <h:body>
 
         <div id="top">
             <ui:insert name="top">
-                <h1 style="text-align: center;color: #ffffff; font-size:3em;">CAPSOFT ACCOUNTING</h1>
+                <h1 style="text-align: center;color: #ffffff; font-size:3em;">Macro XP</h1>
             </ui:insert>
         </div>
 
         <div>
 
             <div id="left">
-                <ui:insert name="left">Left</ui:insert>
+                <h:form style="margin-top: 12px;">
+                    <h:link outcome="movcons_by_descrizione" value="Movimenti per Descrizione"/>
+                </h:form>
+                <h:form style="margin-top: 12px;">
+                    <h:link outcome="movcons_by_anno" value="Movimenti per Anno"/>
+                </h:form>
+                <h:form style="margin-top: 12px;">
+                    <h:link outcome="sample" value="Sample"/>
+                </h:form>
+
+                <h:form style="margin-top: 12px;">
+                    <h:link outcome="movconsall" value="Movcons All"/>
+                </h:form>
+
             </div>
 
             <div id="content" class="left_content">

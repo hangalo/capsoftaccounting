@@ -17,6 +17,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.view.ViewScoped;
 import org.primefaces.event.SelectEvent;
 
 /**
@@ -24,7 +25,7 @@ import org.primefaces.event.SelectEvent;
  * @author informatica
  */
 @Named(value = "movconCDIBean")
-@SessionScoped
+@SessionScoped 
 public class MovconCDIBean implements Serializable{
 
     MovconDAO movconDAO = new MovconDAO();

@@ -65,11 +65,11 @@
                         <p:summaryRow>
                             <p:column colspan="3" style="text-align:right">
                                 <h:outputText value="Totale Dare:" />
-                               <h:inputText id="totaleDare" value="#{movconCDIBean.sommaDare(item.iddoc)}"/>
+                               <h:outputText id="totaleDare" value="#{movconCDIBean.sommaDare(item.iddoc)}"/>
                             </p:column>
                             <p:column>
                                 <h:outputLabel value="Totale avere:"/>
-                                 <h:inputText id="totaleDare" value="#{movconCDIBean.sommaAvere(item.iddoc)}"/>
+                                 <h:outputText id="totaleAvere" value="#{movconCDIBean.sommaAvere(item.iddoc)}"/>
                             </p:column>
                         </p:summaryRow>
 
