@@ -42,6 +42,14 @@ public class MovconDAO {
             + " WHERE ( movcon.keyconto = sottoc.cod )"
             + " and   ( giocon.iddoc = movcon.iddoc )"
             + " and( ( movcon.iddoc = ? ) )";
+     
+     
+     private static final String SUMMAAVERE = " SELECT SUM(movcon.avere)"
+            + "FROM giocon, movcon,  sottoc  "
+            + " WHERE ( movcon.keyconto = sottoc.cod )"
+            + " and   ( giocon.iddoc = movcon.iddoc )"
+            + " and( ( movcon.iddoc = ? ) )";
+           
            
      
      
@@ -91,7 +99,6 @@ public class MovconDAO {
                valore = valore+d;
                
             }
-
         } catch (SQLException ex) {
             System.err.println("Error ond data read: " + ex.getLocalizedMessage());
         } finally {
@@ -102,6 +109,34 @@ public class MovconDAO {
 
     }
     
+     
+      public Double sommaAvere(Integer orderNumber) {
+        Double valore = 0.0;
+         PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+         List<Movcon> movcons = new ArrayList<>();
+        try {
+            conn = BDConnection.getConnection();
+            ps = conn.prepareStatement(SUMMAAVERE);   
+             ps.setInt(1, orderNumber);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+              Double d = rs.getDouble(1);
+               valore = valore+d;
+               
+            }
+        } catch (SQLException ex) {
+            System.err.println("Error ond data read: " + ex.getLocalizedMessage());
+        } finally {
+            BDConnection.closeConnection(conn);
+        }
+  
+        return valore;
+
+    }
+    
+     
     public List<Movcon> findAll() {
         PreparedStatement ps = null;
         Connection conn = null;

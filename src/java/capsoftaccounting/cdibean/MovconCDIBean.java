@@ -75,6 +75,14 @@ public class MovconCDIBean implements Serializable{
         return movconDAO.sommaDare(orderNumber);
 
     }
+      
+      
+      
+       
+      public Double sommaAvere(Integer orderNumber) {
+        return movconDAO.sommaAvere(orderNumber);
+
+    }
     
      public Double getSumaAvere() {
         Double valore = 0.0;
