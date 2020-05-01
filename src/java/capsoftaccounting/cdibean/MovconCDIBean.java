@@ -70,6 +70,12 @@ public class MovconCDIBean implements Serializable{
 
     }
 
+    
+      public Double sommaDare(Integer orderNumber) {
+        return movconDAO.sommaDare(orderNumber);
+
+    }
+    
      public Double getSumaAvere() {
         Double valore = 0.0;
          Movcon mv= new Movcon();
@@ -82,10 +88,10 @@ public class MovconCDIBean implements Serializable{
      
       public Double getSumaDare() {
         Double valore = 0.0;
-        Movcon mv= new Movcon();
+        
         for (Movcon it : searchedMovcons) {
             valore += it.getDare();
-            mv.setTotaleDare(valore);
+            movcon.setTotaleDare(valore);
         }
         return valore;
     }

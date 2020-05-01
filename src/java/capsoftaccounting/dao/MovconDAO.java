@@ -36,6 +36,15 @@ public class MovconDAO {
             + "ORDER BY giocon.iddoc ASC, giocon.datreg ASC";  
     
     
+    
+     private static final String SUMMADARE = " SELECT SUM(movcon.dare)"
+            + "FROM giocon, movcon,  sottoc  "
+            + " WHERE ( movcon.keyconto = sottoc.cod )"
+            + " and   ( giocon.iddoc = movcon.iddoc )"
+            + " and( ( movcon.iddoc = ? ) )";
+           
+     
+     
     private static final String SELECT_BY_YEAR = " SELECT giocon.iddoc, "
             + " giocon.datreg, giocon.desmov, "
             + "giocon.codcentro, movcon.iddoc, "
@@ -64,7 +73,34 @@ public class MovconDAO {
     
     
     
-     
+  
+    
+     public Double sommaDare(Integer orderNumber) {
+        Double valore = 0.0;
+         PreparedStatement ps = null;
+        Connection conn = null;
+        ResultSet rs = null;
+         List<Movcon> movcons = new ArrayList<>();
+        try {
+            conn = BDConnection.getConnection();
+            ps = conn.prepareStatement(SUMMADARE);   
+             ps.setInt(1, orderNumber);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+              Double d = rs.getDouble(1);
+               valore = valore+d;
+               
+            }
+
+        } catch (SQLException ex) {
+            System.err.println("Error ond data read: " + ex.getLocalizedMessage());
+        } finally {
+            BDConnection.closeConnection(conn);
+        }
+  
+        return valore;
+
+    }
     
     public List<Movcon> findAll() {
         PreparedStatement ps = null;
