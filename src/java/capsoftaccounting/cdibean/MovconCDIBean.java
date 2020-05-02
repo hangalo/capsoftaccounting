@@ -74,7 +74,7 @@ public class MovconCDIBean implements Serializable {
     public void selectListenerMoviconAutoComplete(SelectEvent event) {
         String eventValue = event.getObject().toString();
         FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Value:\t" + eventValue));
-      //  searchedMovcons = movconDAO.findMovconByDescrizoine(eventValue);
+        //  searchedMovcons = movconDAO.findMovconByDescrizoine(eventValue);
 
     }
 
@@ -110,16 +110,17 @@ public class MovconCDIBean implements Serializable {
 
     public List<Movcon> queryByDescrizoneAutoComplete(String descrizione) {
         List<Movcon> lista = new ArrayList<>();
-/*        for (Movcon mv : movconDAO.findMovconByDescrizoine(descrizione)) {
+        for (Movcon mv : movconDAO.findMovconByDescrizoine(descrizione)) {
             if (mv.getSottoc().getDescrizione().toLowerCase().startsWith(descrizione.toLowerCase())) {
                 lista.add(mv);
             }
         }
-*/      lista = movconDAO.findMovconByDescrizoine(descrizione);
+
+        /* lista = movconDAO.findMovconByDescrizoine(descrizione);
         for (Movcon object : lista) {
             System.out.println("Value ==== ID DOC" + object.getIddoc());
         }
-        System.out.println("======>>>>"+descrizione);
+        System.out.println("======>>>>"+descrizione);*/
         return lista;
     }
 
