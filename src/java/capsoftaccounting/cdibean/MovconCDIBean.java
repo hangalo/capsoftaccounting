@@ -25,8 +25,8 @@ import org.primefaces.event.SelectEvent;
  * @author informatica
  */
 @Named(value = "movconCDIBean")
-@SessionScoped 
-public class MovconCDIBean implements Serializable{
+@SessionScoped
+public class MovconCDIBean implements Serializable {
 
     MovconDAO movconDAO = new MovconDAO();
     Movcon movcon = new Movcon();
@@ -71,49 +71,55 @@ public class MovconCDIBean implements Serializable{
 
     }
 
-    
-      public Double sommaDare(Integer orderNumber) {
+    public void selectListenerMoviconAutoComplete(SelectEvent event) {
+        String eventValue = event.getObject().toString();
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Value:\t" + eventValue));
+      //  searchedMovcons = movconDAO.findMovconByDescrizoine(eventValue);
+
+    }
+
+    public Double sommaDare(Integer orderNumber) {
         return movconDAO.sommaDare(orderNumber);
 
     }
-      
-      
-      
-       
-      public Double sommaAvere(Integer orderNumber) {
+
+    public Double sommaAvere(Integer orderNumber) {
         return movconDAO.sommaAvere(orderNumber);
 
     }
-    
-     public Double getSumaAvere() {
+
+    public Double getSumaAvere() {
         Double valore = 0.0;
-         Movcon mv= new Movcon();
+        Movcon mv = new Movcon();
         for (Movcon it : searchedMovcons) {
             valore += it.getAvere();
-             mv.setTotaleAvere(valore);
+            mv.setTotaleAvere(valore);
         }
         return valore;
     }
-     
-      public Double getSumaDare() {
+
+    public Double getSumaDare() {
         Double valore = 0.0;
-        
+
         for (Movcon it : searchedMovcons) {
             valore += it.getDare();
             movcon.setTotaleDare(valore);
         }
         return valore;
     }
-    
-    
+
     public List<Movcon> queryByDescrizoneAutoComplete(String descrizione) {
         List<Movcon> lista = new ArrayList<>();
-        for (Movcon mv : movconDAO.findMovconByDescrizoine(descrizione)) {
+/*        for (Movcon mv : movconDAO.findMovconByDescrizoine(descrizione)) {
             if (mv.getSottoc().getDescrizione().toLowerCase().startsWith(descrizione.toLowerCase())) {
                 lista.add(mv);
             }
         }
-
+*/      lista = movconDAO.findMovconByDescrizoine(descrizione);
+        for (Movcon object : lista) {
+            System.out.println("Value ==== ID DOC" + object.getIddoc());
+        }
+        System.out.println("======>>>>"+descrizione);
         return lista;
     }
 
