@@ -58,10 +58,8 @@
                             </p:column>
                         </p:headerRow>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Conto"/>
-                            </f:facet>
+                          <p:column headerText="Conto" style="width:100px;">
+                           
                             <h:outputText value="#{item.keyconto}"/>
                         </p:column>
                         <p:column>
@@ -70,17 +68,13 @@
                             </f:facet>
                             <h:outputText value="#{item.sottoc.descrizione}"/>
                         </p:column>
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Dare"/>
-                            </f:facet>
+                        <p:column headerText="Dare" style="width:150px;">
+                           
                             <h:outputText value="#{item.dare}"/>
                         </p:column>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Avere"/>
-                            </f:facet>
+                            <p:column headerText="Avere" style="width:150px;">
+                          
                             <h:outputText value="#{item.avere}"/>
                         </p:column>
 

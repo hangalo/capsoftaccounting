@@ -39,7 +39,7 @@
 
                         
                         <p:headerRow>
-                            <p:column colspan="2">
+                            <p:column colspan="2" >
                                 <h:outputText value="#{item.giocon.desmov}" />
                             </p:column>
                             <p:column colspan="1">
@@ -50,10 +50,8 @@
                             </p:column>
                         </p:headerRow>
 
-                        <p:column>
-                            <f:facet name="header">
-                                <h:outputText value="Conto"/>
-                            </f:facet>
+                        <p:column headerText="Conto" style="width:20px;">
+                          
                             <h:outputText value="#{item.keyconto}"/>
                         </p:column>
                         <p:column>
